@@ -5,16 +5,16 @@
 
     <!-- Public plugin name should be written in Title Case.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-name -->
-    <name>Intellij_twirl</name>
+    <name>Twirl</name>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
-    <vendor url="https://www.yourcompany.com">YourCompany</vendor>
+    <vendor url="https://github.com/asadhumayun">Asad Humayun</vendor>
 
     <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-description -->
     <description><![CDATA[
-        Enter short description for your plugin here.<br>
-        <em>most HTML tags may be used</em>
+      A simple IntelliJ extension with the hopes of provisioning simple support
+      for coding in Play Framework's Twirl tempalting engine. Free & Open Source.
     ]]></description>
 
     <!-- Product and plugin compatibility requirements.
@@ -27,5 +27,12 @@
     <extensions defaultExtensionNs="com.intellij">
         <toolWindow id="MyToolWindow" factoryClass="io.asadh.intellij_twirl.MyToolWindowFactory"
                     icon="AllIcons.Toolwindows.ToolWindowPalette"/>
+
+        <fileType
+            name="Twirl HTML"
+            implementationClass="io.asadh.intellij_twirl.language.TwirlFileType"
+            fieldName="INSTANCE"
+            language="Twirl"
+            filenamePatterns="*.scala.html"/>
     </extensions>
 </idea-plugin>

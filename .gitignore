@@ -1,4 +1,6 @@
 .gradle
+.idea
+.intellijPlatform
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
@@ -6,7 +8,6 @@ build/
 .kotlin
 
 ### IntelliJ IDEA ###
-.idea/
 *.iws
 *.iml
 *.ipr
