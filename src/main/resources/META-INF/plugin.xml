@@ -25,9 +25,6 @@
     <!-- Extensions defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow id="MyToolWindow" factoryClass="io.asadh.intellij_twirl.MyToolWindowFactory"
-                    icon="AllIcons.Toolwindows.ToolWindowPalette"/>
-
         <fileType
             name="Twirl HTML"
             implementationClass="io.asadh.intellij_twirl.language.TwirlFileType"
