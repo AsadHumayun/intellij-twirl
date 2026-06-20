@@ -16,18 +16,8 @@ public class TwirlPsiParser implements PsiParser {
    * Calls the internal graph traversal algorithm to
    */
   @Override
-  public @NotNull ASTNode parse(@NotNull IElementType arg0, @NotNull PsiBuilder arg1) {
+  public @NotNull ASTNode parse(@NotNull IElementType root, @NotNull PsiBuilder builder) {
     // TODO Auto-generated method stub
     return null;
   }
 }
-
-// class TwirlPsiParser : PsiParserBase {
-    /**
-     * This is where we will parse the twirl template.
-     *
-     * Calls the internal graph traversal algorithm to
-     */
-//     override fun parse(root: IElementType, builder: PsiBuilder): ASTNode =
-//         Search(builder).compute().treeBuilt
-// }
