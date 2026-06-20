@@ -13,6 +13,8 @@ import com.intellij.openapi.util.NlsContexts.Label;
 import com.intellij.openapi.util.NlsSafe;
 
 public class TwirlFileType extends LanguageFileType {
+  public static final TwirlFileType INSTANCE = new TwirlFileType();
+
   TwirlFileType() {
     super(TwirlLanguage.INSTANCE);
   }
