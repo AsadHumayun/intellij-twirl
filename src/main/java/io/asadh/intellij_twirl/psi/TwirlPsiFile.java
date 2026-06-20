@@ -10,7 +10,7 @@ import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.psi.FileViewProvider;
 
 public class TwirlPsiFile extends PsiFileBase {
-  TwirlPsiFile(FileViewProvider viewProvider) {
+  public TwirlPsiFile(FileViewProvider viewProvider) {
     super(viewProvider, TwirlLanguage.INSTANCE);
   }
 
