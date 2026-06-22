@@ -16,8 +16,9 @@ repositories {
 
 // Read more: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin.html
 dependencies {
-    implementation("com.typesafe.play:twirl-parser_2.13:1.6.10")
     intellijPlatform {
+        implementation("org.playframework.twirl:twirl-parser_3:2.1.0-M9")
+        implementation("org.scala-lang:scala3-library_3:3.2.1")
         intellijIdea("2025.3.1")
         plugin("org.intellij.scala", "2026.2.5")
         bundledPlugin("com.intellij.java")
