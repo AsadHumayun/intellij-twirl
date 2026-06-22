@@ -2,8 +2,9 @@ package io.asadh.intellij_twirl.internal.search;
 
 import com.intellij.lang.PsiBuilder;
 
+import scala.jdk.javaapi.CollectionConverters;
+
 import play.twirl.parser.TwirlParser;
-import play.twirl.parser.TreeNodes.*;
 import play.twirl.parser.TwirlParser.*;
 
 public class Search {
@@ -20,56 +21,41 @@ public class Search {
   private ParsedTemplate parse(String text) throws RuntimeException {
     final ParseResult result = this.parser.parse(text);
     if (result instanceof TwirlParser.Success) {
-
+      final TwirlParser.Success successResult = (TwirlParser.Success) result;
+      return new ParsedTemplate(successResult.template(), successResult.input(), null);
     } else
     if (result instanceof TwirlParser.Error) {
-
+      final TwirlParser.Error failedResult = (TwirlParser.Error) result;
+      return new ParsedTemplate(
+        failedResult.template(),
+        failedResult.input(),
+        CollectionConverters.asJava(failedResult.errors())
+      );
     }
-    else {
+    else {  // parsing failed due to unknown reasons
       throw new RuntimeException(
-        "An error occurred while parsing this Twirl template."
+        "An unknown error occurred while parsing this Twirl template."
       );
     }
   }
+
+  /**
+   * Compute the template.
+   *
+   * This is the step where the Twirl AST is traversed and "translated" into
+   * the desired AST that will then be used to make the PsiTree.
+   *
+   * The nodes of this tree will consist of the elements defined in [io.asadh.intellij_twirl.psi.AstNodes]
+   */
+  public PsiBuilder compute() {
+    this.traverse();
+    return this.builder;
+  }
+
+  private void traverse() {
+
+  }
 }
-
-//     private fun parse(source: String?): ParsedTemplate {
-//         val parser = TwirlParser(true)
-//         val result = parser.parse(source)
-
-//         return when (result) {
-//             is Success   ->
-//                 ParsedTemplate(
-//                     nodes   = result.template(),
-//                     input   = result.input(),
-//                     errors  = null,
-//                 )
-
-//             is Error     ->
-//                 ParsedTemplate(
-//                     nodes   = result.template(),
-//                     input   = result.input(),
-//                     errors  = result.errors().asJava(),
-//                 )
-//         }
-//     }
-
-//     /**
-//      * Compute the template.
-//      *
-//      * This is the step where the Twirl AST is traversed and "translated" into
-//      * the desired AST that will then be used to make the PsiTree.
-//      *
-//      * The nodes of this tree will consist of the elements defined in [io.asadh.intellij_twirl.psi.AstNodes]
-//      */
-//     fun compute(): PsiBuilder {
-//         traverse()
-//         return builder
-//     }
-
-//     private fun traverse() {
-//         val marker = builder.mark()
-//     }
 
 //     private fun matchCommonTemplateMeta(
 //         imports : List<Simple>,
