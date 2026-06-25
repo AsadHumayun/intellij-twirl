@@ -27,18 +27,10 @@
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
       <fileType
-          name="Twirl HTML"
-          implementationClass="io.asadh.intellij_twirl.language.FileType"
+          name="Twirl"
+          implementationClass="io.asadh.intellij_twirl.language.TwirlFileType"
           fieldName="INSTANCE"
           language="Twirl"
-          filenamePatterns="*.scala.html"/>
+          patterns="*.scala.html"/>
     </extensions>
-    <!-- <textmate.bundleProvider
-              path="textmate/twirl.tmbundle"/> -->
-
-    <!-- <extensions defaultExtensionNs="com.intellij.textmate.bundleProvider">
-      <textmate.bundle.language
-        language="Twirl"
-        grammarPath="syntaxes/twirl-html.tmLanguage.json"/>
-    </extensions> -->
 </idea-plugin>
