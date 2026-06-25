@@ -1,6 +1,5 @@
 plugins {
     id("java")
-    id("org.jetbrains.kotlin.jvm") version "2.1.20"
     id("org.jetbrains.intellij.platform") version "2.10.2"
 }
 
@@ -19,8 +18,9 @@ dependencies {
     intellijPlatform {
         implementation("org.playframework.twirl:twirl-parser_3:2.1.0-M9")
         implementation("org.scala-lang:scala3-library_3:3.2.1")
-        intellijIdea("2025.3.1")
-        plugin("org.intellij.scala", "2026.2.5")
+
+        intellijIdea("2026.1.3")
+        plugin("org.intellij.scala", "2026.1.3")
         bundledPlugin("com.intellij.java")
         testFramework(org.jetbrains.intellij.platform.gradle.TestFrameworkType.Platform)
     }
@@ -41,13 +41,13 @@ intellijPlatform {
 tasks {
     // Set the JVM compatibility versions
     withType<JavaCompile> {
-        sourceCompatibility = "21"
-        targetCompatibility = "21"
+        sourceCompatibility = "25"
+        targetCompatibility = "25"
     }
 }
 
-kotlin {
-    compilerOptions {
-        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21)
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(25))
     }
 }
