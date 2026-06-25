@@ -2,6 +2,8 @@ package io.asadh.intellij_twirl.internal.search;
 
 import com.intellij.lang.PsiBuilder;
 
+import org.jetbrains.annotations.NotNull;
+
 import scala.jdk.javaapi.CollectionConverters;
 
 import play.twirl.parser.TwirlParser;
@@ -13,28 +15,22 @@ public class Search {
   private final PsiBuilder      builder;
   private final ParsedTemplate  template;
 
-  public Search(PsiBuilder builder) {
+  public Search(@NotNull PsiBuilder builder) {
     this.builder  = builder;
     this.template = this.parse(builder.getOriginalText().toString());
   }
 
-  private ParsedTemplate parse(String text) throws RuntimeException {
+  private @NotNull ParsedTemplate parse(String text) {
     final ParseResult result = this.parser.parse(text);
-    if (result instanceof TwirlParser.Success) {
-      final TwirlParser.Success successResult = (TwirlParser.Success) result;
-      return new ParsedTemplate(successResult.template(), successResult.input(), null);
-    } else
-    if (result instanceof TwirlParser.Error) {
+    if (result instanceof Success successResult) {
+        return new ParsedTemplate(successResult.template(), successResult.input(), null);
+    }
+    else {
       final TwirlParser.Error failedResult = (TwirlParser.Error) result;
       return new ParsedTemplate(
         failedResult.template(),
         failedResult.input(),
         CollectionConverters.asJava(failedResult.errors())
-      );
-    }
-    else {  // parsing failed due to unknown reasons
-      throw new RuntimeException(
-        "An unknown error occurred while parsing this Twirl template."
       );
     }
   }

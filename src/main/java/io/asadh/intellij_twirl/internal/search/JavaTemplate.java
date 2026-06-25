@@ -1,5 +1,7 @@
 package io.asadh.intellij_twirl.internal.search;
 
+import org.jetbrains.annotations.NotNull;
+
 import play.twirl.parser.TreeNodes.*;
 
 import java.util.List;
@@ -21,7 +23,7 @@ public class JavaTemplate {
   private final List<SubTemplate>     sub;
   private final List<TemplateTree>    content;
 
-  public JavaTemplate(Template template) {
+  public JavaTemplate(@NotNull Template template) {
     // TODO: Test the constructor optional here works properly in Scala conversions.
     this.constructor  = Optional.ofNullable(template.constructor().getOrElse(null));
     this.comment      = Optional.ofNullable(template.comment().getOrElse(null));
