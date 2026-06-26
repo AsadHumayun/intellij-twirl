@@ -68,14 +68,14 @@ public class TwirlParser implements ParserDefinition {
    *    are searched in the text of tokens of those types.
    *    For composite comment elements it should contain only the root element type
    *    (for example {@link com.intellij.psi.impl.source.tree.JavaDocElementType#DOC_COMMENT}).
-   *
+   * <p>
    * >  @return the set of comment token types.
-   *
+   * <p>
    * >  Source: `com.intellij.lang.ParserDefinition`
-   *
+   * <p>
    * As we are kind of "skipping" the lexing layer, we will have no comment
    * tokens returned from the Lexer. Therefore send back an EMPTY TokenSet.
-   *
+   * <p>
    * We will be able to get comment nodes from the Twirl AST once it's been
    * parsed.
    */

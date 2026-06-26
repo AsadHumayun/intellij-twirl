@@ -8,7 +8,7 @@ import org.jetbrains.plugins.scala.ScalaLanguage;
 
 /**
  * PsiTokenTypes for the Twirl language.
- *
+ * <p>
  * These will be used to construct the Psi representation of the Twirl AST.
  */
 public class AstNodes {
