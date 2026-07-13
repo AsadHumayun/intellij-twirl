@@ -54,7 +54,12 @@ public class Search {
   }
 
   private void traverse() {
+    matchCommonTemplateMeta(this.template);
+  }
 
+  private void matchCommonTemplateMeta(@NotNull ParsedTemplate parsedTemplate) {
+    final JavaTemplate tmpl = parsedTemplate.getTemplate();
+    this.matchCommonTemplateMeta(tmpl.getImports(), tmpl.getMembers(), tmpl.getSub(), tmpl.getContent());
   }
 
   private void matchCommonTemplateMeta(
@@ -76,10 +81,10 @@ public class Search {
 
   private void matchSubTemplate(@NotNull SubTemplate sub) {
     this.matchCommonTemplateMeta(
-            CollectionConverters.asJava(sub.imports()),
-            CollectionConverters.asJava(sub.members()),
-            CollectionConverters.asJava(sub.sub()),
-            CollectionConverters.asJava(sub.content())
+      CollectionConverters.asJava(sub.imports()),
+      CollectionConverters.asJava(sub.members()),
+      CollectionConverters.asJava(sub.sub()),
+      CollectionConverters.asJava(sub.content())
     );
   }
 
