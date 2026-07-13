@@ -33,4 +33,32 @@ public class JavaTemplate {
     this.sub          = CollectionConverters.asJava(template.sub());
     this.content      = CollectionConverters.asJava(template.content());
   }
+
+  public Optional<Constructor> getConstructor() {
+    return constructor;
+  }
+
+  public Optional<Comment> getComment() {
+    return comment;
+  }
+
+  public PosString getParams() {
+    return params;
+  }
+
+  public List<Simple> getTopImports() {
+    return topImports;
+  }
+
+  public List<Simple> getImports() {
+    return imports;
+  }
+
+  public List<SubTemplate> getSub() {
+    return sub;
+  }
+
+  public List<TemplateTree> getContent() {
+    return content;
+  }
 }
