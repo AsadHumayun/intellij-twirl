@@ -22,6 +22,7 @@ public class JavaTemplate {
   private final List<Simple>          imports;
   private final List<SubTemplate>     sub;
   private final List<TemplateTree>    content;
+  private final List<LocalMember>     members;
 
   public JavaTemplate(@NotNull Template template) {
     // TODO: Test the constructor optional here works properly in Scala conversions.
@@ -32,6 +33,7 @@ public class JavaTemplate {
     this.imports      = CollectionConverters.asJava(template.imports());
     this.sub          = CollectionConverters.asJava(template.sub());
     this.content      = CollectionConverters.asJava(template.content());
+    this.members      = CollectionConverters.asJava(template.members());
   }
 
   public Optional<Constructor> getConstructor() {
@@ -60,5 +62,9 @@ public class JavaTemplate {
 
   public List<TemplateTree> getContent() {
     return content;
+  }
+
+  public List<LocalMember> getMembers() {
+    return members;
   }
 }
